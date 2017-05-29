@@ -11,19 +11,23 @@ l = np.arange(N_LOCATIONS)
 #List of two location combinations
 x = list(it.combinations(l,2))
 
-
 #List of travel times between two location combinations
 travelTimes = np.random.uniform(MIN_TRAVEL_TIME,MAX_TRAVEL_TIME,x.size)
 
-dictionary = dict(zip(x, travelTimes))
+salesMap = dict(zip(x, travelTimes))
 
-for start, end in dictionary:
+#example code
+for start, end in salesMap:
   if start == 0:
-    print dictionary[(start,end)]
+    print salesMap[(start,end)]
+#example code
 
 #Begin Primary Algorithm Loop
 
-#Startpoint = 0
+#working variables
+startPoint = 0
+traveled = 
+remaining = x;
 
 #Populate potential moves from the list of available options, given where we are
 
