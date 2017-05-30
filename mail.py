@@ -1,5 +1,6 @@
 import numpy as np
 import itertools as it
+from itertools import ifilterfalse
 
 MIN_TRAVEL_TIME = 1
 MAX_TRAVEL_TIME = 5
@@ -12,7 +13,7 @@ l = np.arange(N_LOCATIONS)
 x = list(it.combinations(l,2))
 
 #List of travel times between two location combinations
-travelTimes = np.random.uniform(MIN_TRAVEL_TIME,MAX_TRAVEL_TIME,x.size)
+travelTimes = np.random.uniform(MIN_TRAVEL_TIME,MAX_TRAVEL_TIME,len(x))
 
 salesMap = dict(zip(x, travelTimes))
 
@@ -25,9 +26,26 @@ for start, end in salesMap:
 #Begin Primary Algorithm Loop
 
 #working variables
-startPoint = 0
-traveled = 
-remaining = x;
+curLoc = 0
+traveled = [0]
+remaining = x[:]
+
+moveOpts = ifilterfalse(lambda x: x!=curLoc, remaining)
+
+def nextMoveOpts(loc, remain):
+  loop = 0
+  #prune invalid moves
+  for item in remain:
+    print item
+    print remain
+    print loop
+    if item[0] != loc:
+      del remain[loop]
+    else:
+      loop+=1
+  return
+
+options = nextMoveOpts(curLoc, remaining)
 
 #Populate potential moves from the list of available options, given where we are
 
